@@ -34,12 +34,12 @@ public class Solution {
     }
 }
 */
-public class SearchRotatedArray{
+public class Solution{
         public int search(int[] A, int target) {
         // check if the target is in the sorted part, if so keep doing the binary search
         // otherwise throw away the sorted part and do the same on the other part of the array
         int start = 0;
-        int end = A.length - 1;
+        int end = A.length-1;
 
         while (start <= end) {
             int mid = (start + end) / 2;
@@ -47,19 +47,19 @@ public class SearchRotatedArray{
             if (A[start] <= A[mid]) {//this is the sorted part of the arrry check
                 // situation 1, red line
                 if (A[start] <= target && target <= A[mid]) {
-                    end = mid -1 ;
+                    end = mid-1;
                 }
                 else {
-                    start = mid + 1;
+                    start = mid+1;
                 }
             }
             else {
                 // situation 2, green line
-                if (A[mid] < target && target <= A[end]) {
-                    start = mid + 1;
+                if (A[mid] < target && target < A[start]) {
+                    start = mid+1;
                 }
                 else {
-                    end = mid -1 ;
+                    end = mid-1;
                 }
             }
         }
